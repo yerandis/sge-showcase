@@ -1,0 +1,129 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry {
+  display: flex;
+  gap: 0.875rem;
+}
+
+.lineWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+.dotCreate {
+  background-color: var(--color-success, #16a34a);
+}
+.dotUpdate {
+  background-color: var(--color-primary);
+}
+
+.line {
+  flex: 1;
+  width: 2px;
+  background-color: var(--color-border);
+  margin-top: 0.25rem;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 1.25rem;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.375rem;
+}
+
+.action {
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+}
+
+.time {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.changes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.change {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.625rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm, 0.25rem);
+}
+
+.fieldName {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.oldValue {
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.arrow {
+  color: var(--color-text-secondary);
+}
+
+.newValue {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.createMsg {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Estado de la operación auditada: éxito o incidencia. */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.statusSuccess {
+  color: var(--color-success, #15803d);
+  background: var(--color-bg-secondary);
+}
+
+.statusFailed {
+  color: var(--color-danger, #b91c1c);
+  background: var(--color-bg-secondary);
+}

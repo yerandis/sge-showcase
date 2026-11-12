@@ -1,0 +1,421 @@
+/* ─── SHELL ───────────────────────────────────────────────────── */
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-bg-secondary);
+}
+
+/* ─── SIDEBAR ─────────────────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background-color: #1e293b;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  transition: width 0.2s;
+}
+
+.sidebarBrand {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brandName {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.brandSub {
+  font-size: 0.6875rem;
+  color: #64748b;
+  margin-top: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.sidebarNav {
+  flex: 1;
+  padding: 0.875rem 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5625rem 0.75rem;
+  border-radius: 0.5rem;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+
+.navLink:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  color: #e2e8f0;
+}
+
+/* El color activo usa la variable --sidebar-accent del módulo */
+.navLinkActive {
+  background-color: var(--sidebar-accent, #2563eb);
+  color: #ffffff !important;
+}
+
+/* ─── FOOTER DEL SIDEBAR ──────────────────────────────────────── */
+.sidebarFooter {
+  padding: 0.875rem 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebarUser {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.sidebarUserAvatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sidebarUserInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebarUserName {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logoutBtn {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+  text-align: left;
+}
+
+.logoutBtn:hover {
+  color: #94a3b8;
+}
+
+/* ─── ÁREA PRINCIPAL ──────────────────────────────────────────── */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ─── HEADER ──────────────────────────────────────────────────── */
+.header {
+  height: 52px;
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* izquierda módulos / derecha acciones */
+  padding: 0 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  gap: 1rem;
+}
+
+/* ─── SELECTOR DE MÓDULOS (izquierda del header) ──────────────── */
+.headerModules {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  height: 100%;
+}
+
+.moduleTab {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+  white-space: nowrap;
+}
+
+.moduleTab:hover {
+  color: var(--color-text-primary);
+}
+
+/* El tab activo usa el color del módulo */
+.moduleTabActive {
+  color: var(--tab-color, var(--color-primary)) !important;
+  border-bottom-color: var(--tab-color, var(--color-primary)) !important;
+  font-weight: 600;
+}
+
+/* ─── ACCIONES DEL HEADER (derecha) ──────────────────────────── */
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all 0.15s;
+}
+
+.iconBtn:hover {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.userBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background-color: var(--color-bg-primary);
+}
+
+.userAvatar {
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  max-width: 8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── CONTENIDO ───────────────────────────────────────────────── */
+.content {
+  flex: 1;
+  padding: 1.75rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — MainLayout
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Overlay oscuro detrás del drawer, oculto en escritorio */
+.overlay {
+  display: none;
+}
+
+/* Botón hamburguesa: oculto en escritorio */
+.menuBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.menuBtn svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+/* Botón cerrar dentro del sidebar: oculto en escritorio */
+.sidebarCloseBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+.sidebarCloseBtn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.sidebarBrand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ─── TABLET: reduce paddings, permite scroll horizontal en tabs ── */
+@media (max-width: 1024px) {
+  .content {
+    padding: 1.25rem;
+  }
+
+  .headerModules {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .headerModules::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ─── MÓVIL: sidebar se convierte en drawer ──────────────────── */
+@media (max-width: 768px) {
+  .shell {
+    display: block;
+  }
+
+  .menuBtn {
+    display: flex;
+  }
+  .sidebarCloseBtn {
+    display: block;
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.5);
+    z-index: 40;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    max-width: 80vw;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.sidebarOpen {
+    transform: translateX(0) !important;
+  }
+
+  .header {
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+
+  .headerModules {
+    gap: 0;
+  }
+
+  .moduleTab {
+    padding: 0 0.625rem;
+    font-size: 0.8125rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .headerRight {
+    gap: 0.375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 0.75rem;
+  }
+  .header {
+    padding: 0 0.75rem;
+  }
+}
+
+.sidebarUserAvatar {
+  /* Conserva las reglas actuales del contenedor. */
+  overflow: hidden;
+}
+
+.sidebarUserAvatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* La imagen debe ocupar el círculo del avatar sin deformarse. */
+.sidebarUserAvatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

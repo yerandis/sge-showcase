@@ -1,0 +1,754 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ─── CABECERA DE PÁGINA ──────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pageTitle {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.pageSubtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.25rem;
+}
+
+.refreshBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.refreshBtn:hover:not(:disabled) {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+}
+
+.refreshBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.refreshIcon {
+  width: 0.9375rem;
+  height: 0.9375rem;
+}
+
+/* ─── GRID DE TARJETAS ────────────────────────────────────────── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* ─── TARJETA DE ESTADÍSTICA ──────────────────────────────────── */
+.card {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition:
+    box-shadow 0.15s,
+    transform 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  /* Barra de color en el top de la tarjeta */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--card-accent, var(--color-primary));
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardLabel {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cardIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-icon-bg, var(--color-primary-light));
+  color: var(--card-accent, var(--color-primary));
+}
+
+.cardIcon svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.cardValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.cardFooter {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Skeleton de carga */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-tertiary) 25%,
+    var(--color-border) 50%,
+    var(--color-bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeletonValue {
+  height: 2rem;
+  width: 4rem;
+}
+
+.skeletonLabel {
+  height: 0.75rem;
+  width: 7rem;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ─── SECCIÓN DE RESUMEN ──────────────────────────────────────── */
+.section {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.sectionHeader {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.sectionLink {
+  font-size: 0.8125rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sectionLink:hover {
+  text-decoration: underline;
+}
+
+.sectionBody {
+  padding: 1.25rem 1.5rem;
+}
+
+/* Barra de progreso activos/inactivos */
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.progressBar {
+  height: 0.5rem;
+  background-color: var(--color-bg-tertiary);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--color-success);
+  border-radius: 9999px;
+  transition: width 0.5s ease;
+}
+
+/* Error */
+.errorBox {
+  background-color: var(--color-danger-light);
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--color-danger);
+  font-size: 0.875rem;
+}
+
+.errorIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  margin-top: 0.0625rem;
+}
+
+/* ==========================================================
+   DASHBOARD SGE — CAPA VISUAL
+   La paleta es local a esta vista; no altera las demás páginas.
+   ========================================================== */
+
+.page {
+  --dashboard-accent-blue: #2563eb;
+  --dashboard-accent-green: #16856b;
+  --dashboard-accent-amber: #b7791f;
+  --dashboard-accent-violet: #7057c8;
+  --dashboard-accent-teal: #0f8588;
+
+  --dashboard-icon-blue: #eaf1ff;
+  --dashboard-icon-green: #e5f5ef;
+  --dashboard-icon-amber: #fff4df;
+  --dashboard-icon-violet: #f0ebff;
+  --dashboard-icon-teal: #e2f5f4;
+
+  --dashboard-card-shadow:
+    0 1px 2px rgb(15 23 42 / 3%), 0 8px 24px rgb(15 23 42 / 3%);
+
+  width: 100%;
+  gap: 1.5rem;
+}
+
+/* El modo oscuro conserva la misma identidad, con tonos legibles. */
+:global([data-theme="dark"]) .page {
+  --dashboard-accent-blue: #78a5ff;
+  --dashboard-accent-green: #58c9a5;
+  --dashboard-accent-amber: #f2c36f;
+  --dashboard-accent-violet: #b4a0ff;
+  --dashboard-accent-teal: #61ceca;
+
+  --dashboard-icon-blue: #243957;
+  --dashboard-icon-green: #203d37;
+  --dashboard-icon-amber: #443722;
+  --dashboard-icon-violet: #352c50;
+  --dashboard-icon-teal: #1e4142;
+
+  --dashboard-card-shadow:
+    0 1px 2px rgb(0 0 0 / 12%), 0 8px 24px rgb(0 0 0 / 10%);
+}
+
+/* Cabecera */
+.pageHeader {
+  align-items: center;
+  padding: 0.25rem 0 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.headerCopy {
+  min-width: 0;
+}
+
+.pageEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.65rem;
+  color: var(--color-text-secondary);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+}
+
+.eyebrowDivider {
+  width: 1.25rem;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--color-primary);
+}
+
+.pageTitle {
+  font-size: clamp(1.65rem, 2.5vw, 2.1rem);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+
+.pageSubtitle {
+  max-width: 42rem;
+  margin-top: 0.55rem;
+  line-height: 1.65;
+}
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+  color: var(--color-text-secondary);
+  font-size: 0.76rem;
+}
+
+.statusDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--dashboard-accent-green);
+  box-shadow: 0 0 0 3px var(--dashboard-icon-green);
+}
+
+.refreshBtn {
+  flex: 0 0 auto;
+  min-height: 2.6rem;
+  padding: 0.65rem 0.95rem;
+  border-color: var(--color-border);
+  border-radius: 0.7rem;
+  color: var(--color-text-primary);
+  font-weight: 650;
+  box-shadow: var(--shadow-sm);
+}
+
+.refreshBtn:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: var(--color-bg-tertiary);
+}
+
+.refreshBtn:focus-visible,
+.sectionLink:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+.refreshing {
+  animation: dashboardSpin 1s linear infinite;
+}
+
+@keyframes dashboardSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Indicadores principales */
+.statsGrid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.statsGrid > * {
+  grid-column: span 3;
+}
+
+.card {
+  min-width: 0;
+  min-height: 10.5rem;
+  padding: 1.25rem;
+  gap: 0.85rem;
+  border-radius: 0.9rem;
+  box-shadow: var(--dashboard-card-shadow);
+}
+
+.card::before {
+  height: 3px;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.cardLabel {
+  font-size: 0.73rem;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.cardIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  border-radius: 0.75rem;
+}
+
+.cardIcon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.cardValue {
+  font-size: clamp(1.8rem, 2.5vw, 2.25rem);
+  font-variant-numeric: tabular-nums;
+}
+
+.cardFooter {
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 0;
+  line-height: 1.45;
+}
+
+/* Secciones analíticas */
+.insightsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 1rem;
+}
+
+.section {
+  min-width: 0;
+  border-radius: 0.9rem;
+  box-shadow: var(--dashboard-card-shadow);
+}
+
+.sectionHeader {
+  min-height: 4rem;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+}
+
+.sectionTitle {
+  font-size: 0.93rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.sectionLink {
+  flex: 0 0 auto;
+  font-weight: 650;
+  text-underline-offset: 3px;
+}
+
+.sectionBody {
+  padding: 1.25rem;
+}
+
+/* Indicador de plantilla */
+.progressLabel {
+  gap: 1rem;
+  align-items: baseline;
+  line-height: 1.5;
+}
+
+.progressLabel span:last-child {
+  color: var(--color-text-primary);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.progressBar {
+  height: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.progressFill {
+  background: var(--dashboard-accent-green);
+}
+
+/* Actividad reciente */
+.activityList {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.activityItem {
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.activityItem:first-child {
+  padding-top: 0;
+}
+
+.activityItem:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.activityMarker {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 1.8rem;
+  padding-top: 0.2rem;
+}
+
+.activityMarker span {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 3px solid var(--dashboard-icon-blue);
+  border-radius: 50%;
+  background: var(--dashboard-accent-blue);
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+
+.activityMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.activityTitleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.activityTitle {
+  color: var(--color-text-primary);
+  font-size: 0.84rem;
+  font-weight: 650;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.activityMeta {
+  margin-top: 0.25rem;
+  color: var(--color-text-secondary);
+  font-size: 0.77rem;
+  overflow-wrap: anywhere;
+}
+
+.activityTime {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.activityStatus {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  font-size: 0.67rem;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.activityStatus[data-status="success"],
+.activityStatus[data-status="exitoso"],
+.activityStatus[data-status="completed"] {
+  border-color: transparent;
+  background: var(--dashboard-icon-green);
+  color: var(--dashboard-accent-green);
+}
+
+.activityStatus[data-status="error"],
+.activityStatus[data-status="failed"],
+.activityStatus[data-status="fallido"] {
+  border-color: transparent;
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+/* El bloque de error existente también se adapta al tema oscuro. */
+:global([data-theme="dark"]) .errorBox {
+  border-color: #713b43;
+  background: #3a242b;
+  color: #ffb4bd;
+}
+
+/* Adaptación a tablet y móvil */
+@media (max-width: 1100px) {
+  .statsGrid > * {
+    grid-column: span 6;
+  }
+
+  .insightsGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    gap: 1.1rem;
+  }
+
+  .pageHeader {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .refreshBtn {
+    align-self: flex-start;
+  }
+
+  .statsGrid {
+    gap: 0.75rem;
+  }
+
+  .statsGrid > * {
+    grid-column: span 6;
+  }
+
+  .card {
+    min-height: 9.5rem;
+    padding: 1rem;
+  }
+
+  .cardHeader {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .cardIcon {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  .cardValue {
+    font-size: 1.75rem;
+  }
+
+  .sectionHeader,
+  .sectionBody {
+    padding: 1rem;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .progressLabel {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .progressLabel span:last-child {
+    text-align: left;
+  }
+}
+
+@media (max-width: 380px) {
+  .statsGrid > * {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .refreshing {
+    animation: none;
+  }
+
+  .card,
+  .progressFill {
+    transition: none;
+  }
+}
+:global([data-theme="dark"]) .activityStatus[data-status="error"],
+:global([data-theme="dark"]) .activityStatus[data-status="failed"],
+:global([data-theme="dark"]) .activityStatus[data-status="fallido"] {
+  background: #49252d;
+  color: #ffb4bd;
+}
+
+/* Scroll independiente para Actividades recientes */
+.activityScroll {
+  max-height: 24rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+  padding-right: 0.85rem;
+}
+
+/* Personalización de la barra en Chrome, Edge y Safari */
+.activityScroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.activityScroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.activityScroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+.activityScroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* En pantallas pequeñas, reducir ligeramente la altura */
+@media (max-width: 640px) {
+  .activityScroll {
+    max-height: 20rem;
+  }
+}
